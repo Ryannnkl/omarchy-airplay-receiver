@@ -54,7 +54,7 @@ The connection section is populated from UxPlay's live connection events. It is 
 
 ## Configure
 
-The default AirPlay receiver name is `Linux AirPlay 2`, the default port base is `53317`, full-screen mode is disabled, and the default frame-rate limit is 30 FPS. These values can be changed through the bar entry:
+The default AirPlay receiver name is `Linux AirPlay`, the default port base is `53317`, full-screen mode is disabled, and the default frame-rate limit is 30 FPS. These values can be changed through the bar entry:
 
 ```sh
 omarchy bar set io.github.ryannnkl.airplay-receiver name "Linux AirPlay"

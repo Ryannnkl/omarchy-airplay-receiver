@@ -12,7 +12,7 @@ Item {
   property bool restartNeeded: false
   property bool fullscreen: root.booleanSetting("fullscreen", false)
   property int fps: Number(root.setting("fps", 30)) === 60 ? 60 : 30
-  readonly property string name: String(root.setting("name", "Linux AirPlay 2"))
+  readonly property string name: String(root.setting("name", "Linux AirPlay"))
   readonly property string port: String(root.setting("port", "53317"))
 
   function setting(name, fallback) {

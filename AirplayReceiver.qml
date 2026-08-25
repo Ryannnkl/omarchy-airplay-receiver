@@ -71,7 +71,7 @@ Item {
 
     command: [
       "uxplay",
-      "-n", root.preferences ? root.preferences.name : "Linux AirPlay 2",
+      "-n", root.preferences ? root.preferences.name : "Linux AirPlay",
       "-nh",
       "-m",
       "-p", root.preferences ? root.preferences.port : "53317",
