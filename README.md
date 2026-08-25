@@ -46,24 +46,6 @@ This plugin is not yet published in the Omarchy catalog. To install it directly 
 omarchy plugin add https://github.com/Ryannnkl/omarchy-airplay-receiver.git --enable
 ```
 
-For local development, keep the plugin folder at:
-
-```text
-~/.config/omarchy/plugins/io.github.ryannnkl.airplay-receiver
-```
-
-Enable it with:
-
-```sh
-omarchy plugin enable io.github.ryannnkl.airplay-receiver right
-```
-
-If it is not visible, add it manually:
-
-```sh
-omarchy bar put io.github.ryannnkl.airplay-receiver right
-```
-
 ## Usage
 
 Open the panel from the AirPlay icon in the bar. The switch controls whether the receiver is advertised on the local network. When it is enabled, choose the configured receiver from Control Center > Screen Mirroring on the Mac.
