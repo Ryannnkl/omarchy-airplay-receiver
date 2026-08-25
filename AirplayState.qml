@@ -52,8 +52,14 @@ Item {
       return
     }
 
-    if (text.toLowerCase().indexOf("lost connection with client") !== -1) {
+    var lower = text.toLowerCase()
+    if (lower.indexOf("lost connection with client") !== -1) {
       clearClient()
+      lastError = "Mac stopped responding. Start Screen Mirroring again to reconnect."
+      return
+    }
+
+    if (lower.indexOf("client may be offline") !== -1) {
       return
     }
 

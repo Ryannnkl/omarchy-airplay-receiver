@@ -73,6 +73,8 @@ Item {
       "uxplay",
       "-n", root.preferences ? root.preferences.name : "Linux AirPlay",
       "-nh",
+      "-nohold",
+      "-reset", "0",
       "-m",
       "-p", root.preferences ? root.preferences.port : "53317",
       "-vs", root.preferences && root.preferences.fullscreen
