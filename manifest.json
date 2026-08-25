@@ -2,14 +2,16 @@
   "schemaVersion": 1,
   "id": "io.github.ryannnkl.airplay-receiver",
   "name": "AirPlay Receiver",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "author": "Ryannnkl",
   "license": "MIT",
   "description": "Control a UxPlay AirPlay receiver, display mode, frame rate, and connected Mac from the Omarchy bar.",
-  "kinds": ["bar-widget"],
+  "kinds": ["service", "bar-widget"],
   "entryPoints": {
+    "service": "AirplayService.qml",
     "barWidget": "AirplayPanel.qml"
   },
+  "keepLoaded": true,
   "barWidget": {
     "displayName": "AirPlay Receiver",
     "description": "Control UxPlay display mode, frame rate, and connected Mac details.",

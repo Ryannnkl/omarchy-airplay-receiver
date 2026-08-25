@@ -16,12 +16,13 @@ Item {
     id: hero
     width: parent.width
     title: "AirPlay Receiver"
-    meta: root.receiver.running
-      ? (root.clientState.connected ? "Connected" : root.clientState.known ? "Connecting" : "Ready to Connect")
+    meta: root.receiver && root.receiver.running
+      ? (root.clientState && root.clientState.connected ? "Connected"
+        : root.clientState && root.clientState.known ? "Connecting" : "Ready to Connect")
       : "Turned Off"
     foreground: root.panel.foreground
     fontFamily: root.panel.fontFamily
-    iconOpacity: root.receiver.running ? 1.0 : 0.5
+    iconOpacity: root.receiver && root.receiver.running ? 1.0 : 0.5
     iconComponent: Component {
       Text {
         text: String.fromCodePoint(0xF0018)
@@ -32,7 +33,7 @@ Item {
     }
     trailingControl: Component {
       ToggleSwitch {
-        checked: root.receiver.running
+        checked: !!(root.receiver && root.receiver.running)
         foreground: root.panel.foreground
         accent: Color.accent
         onToggled: root.panel.toggleReceiver()

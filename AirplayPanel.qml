@@ -6,7 +6,8 @@ Panel {
   id: root
 
   readonly property string pluginId: "io.github.ryannnkl.airplay-receiver"
-  readonly property bool receiverEnabled: receiver.running
+  readonly property var service: bar?.shell?.serviceFor(root.pluginId)
+  readonly property bool receiverEnabled: !!(root.service && root.service.running)
   readonly property string fontFamily: bar ? bar.fontFamily : Style.font.family
   readonly property color foreground: bar ? bar.foreground : Color.foreground
   readonly property string icon: String.fromCodePoint(0xF0018)
@@ -16,33 +17,10 @@ Panel {
   implicitWidth: button.implicitWidth
   implicitHeight: button.implicitHeight
 
-  AirplayPreferences {
-    id: preferences
-    pluginId: root.pluginId
-    config: root.settings
-    receiverRunning: receiver.running
-  }
-
-  AirplayState {
-    id: state
-  }
-
-  AirplayReceiver {
-    id: receiver
-    preferences: preferences
-    onLogLine: function(line) { state.handleLog(line) }
-    onExited: function(exitCode, expected) {
-      state.clearClient()
-      if (!expected && exitCode !== 0) state.setExitError(exitCode)
-    }
-  }
-
   function toggleReceiver() {
-    if (receiver.running) receiver.stop()
-    else {
-      state.reset()
-      receiver.start()
-    }
+    if (!root.service) return
+    if (root.service.running) root.service.stop()
+    else root.service.start()
   }
 
   BarIconButton {
@@ -73,9 +51,9 @@ Panel {
       id: content
       anchors.fill: parent
       panel: root
-      receiver: receiver
-      preferences: preferences
-      clientState: state
+      receiver: root.service
+      preferences: root.service ? root.service.preferences : null
+      clientState: root.service ? root.service.clientState : null
     }
   }
 

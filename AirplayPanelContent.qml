@@ -40,9 +40,9 @@ Item {
       }
 
       Text {
-        visible: root.clientState.lastError !== ""
+        visible: root.clientState ? root.clientState.lastError !== "" : false
         width: parent.width
-        text: root.clientState.lastError
+        text: root.clientState ? root.clientState.lastError : ""
         color: root.panel.bar ? root.panel.bar.urgent : Color.urgent
         font.family: root.panel.fontFamily
         font.pixelSize: Style.font.bodySmall
@@ -55,12 +55,12 @@ Item {
         width: parent.width
         foreground: root.panel.foreground
         fontFamily: root.panel.fontFamily
-        fullscreen: root.preferences.fullscreen
-        fps: root.preferences.fps
-        restartNeeded: root.preferences.restartNeeded
-        onFullScreenToggled: function(enabled) { root.preferences.setFullscreen(enabled) }
-        onFpsSelected: function(value) { root.preferences.setFps(value) }
-        onRestartClicked: root.receiver.restart()
+        fullscreen: root.preferences ? root.preferences.fullscreen : false
+        fps: root.preferences ? root.preferences.fps : 30
+        restartNeeded: root.preferences ? root.preferences.restartNeeded : false
+        onFullScreenToggled: function(enabled) { if (root.preferences) root.preferences.setFullscreen(enabled) }
+        onFpsSelected: function(value) { if (root.preferences) root.preferences.setFps(value) }
+        onRestartClicked: if (root.receiver) root.receiver.restart()
       }
 
       PanelSeparator { foreground: root.panel.foreground }
@@ -69,15 +69,15 @@ Item {
         width: parent.width
         foreground: root.panel.foreground
         fontFamily: root.panel.fontFamily
-        connected: root.clientState.connected
-        clientName: root.clientState.clientName
-        clientModel: root.clientState.clientModel
-        clientDeviceId: root.clientState.clientDeviceId
-        onDisconnectClicked: root.receiver.disconnectClient()
+        connected: root.clientState ? root.clientState.connected : false
+        clientName: root.clientState ? root.clientState.clientName : ""
+        clientModel: root.clientState ? root.clientState.clientModel : ""
+        clientDeviceId: root.clientState ? root.clientState.clientDeviceId : ""
+        onDisconnectClicked: if (root.receiver) root.receiver.disconnectClient()
       }
 
       Text {
-        visible: root.receiver.running && !root.clientState.known
+        visible: !!(root.receiver && root.receiver.running && root.clientState && !root.clientState.known)
         width: parent.width
         text: "No Mac is connected. Start Screen Mirroring on the Mac to connect."
         color: Qt.darker(root.panel.foreground, 1.5)
@@ -87,7 +87,7 @@ Item {
       }
 
       Text {
-        visible: !root.receiver.running
+        visible: !root.receiver || !root.receiver.running
         width: parent.width
         text: "Turn on the receiver to make Linux AirPlay available to nearby Macs."
         color: Qt.darker(root.panel.foreground, 1.5)
