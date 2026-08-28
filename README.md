@@ -54,6 +54,8 @@ The connection section is populated from UxPlay's live connection events. It is 
 
 The receiver does not reset a session just because the Mac is idle or temporarily misses AirPlay heartbeat requests. A new client can replace a stale session and reconnect without restarting the receiver.
 
+UxPlay requests 4K/60 HEVC when the Mac supports it. Older Macs can fall back to H.264, and the final resolution is negotiated by AirPlay.
+
 ## Configure
 
 The default AirPlay receiver name is `Linux AirPlay`, the default port base is `53317`, full-screen mode is disabled, and the default frame-rate limit is 30 FPS. These values can be changed through the bar entry:

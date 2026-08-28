@@ -75,6 +75,7 @@ Item {
       "-nh",
       "-nohold",
       "-reset", "0",
+      "-h265", "-s", "3840x2160@60",
       "-m",
       "-p", root.preferences ? root.preferences.port : "53317",
       "-vs", root.preferences && root.preferences.fullscreen
