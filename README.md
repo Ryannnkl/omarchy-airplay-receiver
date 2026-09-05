@@ -54,7 +54,7 @@ The connection section is populated from UxPlay's live connection events. It is 
 
 The receiver does not reset a session just because the Mac is idle or temporarily misses AirPlay heartbeat requests. A new client can replace a stale session and reconnect without restarting the receiver.
 
-UxPlay requests 4K/60 HEVC when the Mac supports it. Older Macs can fall back to H.264, and the final resolution is negotiated by AirPlay.
+The default profile requests 1080p H.264 for low latency. Higher-resolution HEVC can be tested separately, but software decoding may add significant delay.
 
 ## Configure
 

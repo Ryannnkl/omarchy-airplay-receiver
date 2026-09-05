@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "io.github.ryannnkl.airplay-receiver",
   "name": "AirPlay Receiver",
-  "version": "0.5.4",
+  "version": "0.5.5",
   "author": "Ryannnkl",
   "license": "MIT",
   "description": "Control a UxPlay AirPlay receiver, display mode, frame rate, and connected Mac from the Omarchy bar.",
